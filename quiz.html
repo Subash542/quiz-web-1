@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Foundation Test for Basic Japanese (JFT-Basic)</title>
+    <link rel="stylesheet" href="quiz.css">
+    <!-- Font Awesome 6 (latest) full CDN link -->
+<link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+        
+    </style>
+</head>
+
+<body>
+     <!-- CBT Header -->
+    <div class="cbt-header">
+        <div class="sections-text">
+            <span class="question-info">Question: <span id="currentNum">1</span> </span>
+            Section: 
+            <div class="section-name" id="currentSection">Script and Vocabulary</div>
+        </div>
+
+        <!-- important ho tara display none gareko -->
+        <div class="current-section-display" id="currentSectionDisplay">
+            <div class="current-section-title" id="navSectionTitle">Script & Vocabulary</div>
+            <div class="current-section-subtitle" id="navSectionSubtitle">Questions: 1-12</div>
+        </div>
+
+        <div class="timer-sections">
+            <div class="timer-section-text">Section Time Remaining </div><i class="fa-regular fa-clock"></i>
+            <div class="time-display" id="timeDisplay">1:00:00</div>
+        </div>
+        
+        <div class="finish-button">
+            <div class="submit-button"><button class="cbt-btn" onclick="submitTest()" id="submitBtn" style="background-color: #f7c374; color: black;">Finish Section </button></div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar -->
+    <div class="nav-bar">
+         <div class="nab-box1 boxes"><b class="candidate-test">Test : </b>Japan Foundation Test For Basic Japanese</div>
+         <div class="nab-box2 boxes"><b class="candidate">Candidate:</b> USER Subash Parajuli</div>
+    </div>
+
+    <!-- Main CBT Interface -->
+    <div class="cbt-container">
+        <!-- Left Question Navigation Panel -->
+        <div class="question-panel">
+            <div class="section-header" id="currentSectionHeader">Section 1</div>
+            <div class="question-column" id="currentSectionColumn"></div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content-area" id="contentArea">
+            <!-- Question Header -->
+            <div class="question-header">
+                <div>Question: <span id="questionHeaderNum">1</span> Read the following qiestion carefully</div>
+            </div>
+            <div class="language-selector">
+                <div class="lang-box">
+                    <!-- Toggle Button -->
+                    <div class="toggle-btn" id="langBtn"><i class="fa-thin fa-image"></i>Your Language 1</div>
+
+                    <!-- Language Options -->
+                    <div class="options" id="langOptions">
+                        <button class="lang-btn active" onclick="setLanguage('ja')">日本語</button>
+                        <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                    </div>
+                </div>
+                <div class="lang-box">
+                    <!-- Toggle Button -->
+                    <div class="toggle-btn" id="langBtn"><i class="fa-thin fa-image"></i>Your Language 2</div>
+
+                    <!-- Language Options -->
+                    <div class="options" id="langOptions">
+                        <button class="lang-btn active" onclick="setLanguage('ja')">日本語</button>
+                        <button class="lang-btn" onclick="setLanguage('en')">English</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Question Content - THIS IS THE ONLY SCROLLABLE AREA -->
+            <div class="question-content" id="questionContent">
+                <div class="question-text">
+                    <div class="question-japanese" id="questionJA">問題文がここに表示されます。</div>
+                    <div class="question-english" id="questionEN" style="display: none;">Question text will appear here.</div>
+                </div>
+                <div class="audio-section" id="audioSection" style="display: none;">
+                    <div class="audio-controls">
+                        <button class="audio-btn" onclick="playAudio()" id="playBtn">▶</button>
+                        <button class="audio-btn" onclick="replayAudio()" id="replayBtn" disabled>🔁 Replay</button>
+                    </div>
+                    <!-- Hidden audio element -->
+                    <audio id="audioElement" style="display: none;" preload="metadata"></audio>
+                </div>
+
+                <!-- Question Image -->
+                <div class="question-image" id="questionImage" style="display: none;">
+                    <img id="questionImg" src="" alt="Question Image" />
+                </div>
+
+                <!-- Options -->
+                <div class="options-container" id="optionsContainer">
+                    <!-- Options populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="cbt-controls">
+        <div >
+             <div class="footer-icons">
+      <div class="settings"><i class="fa-solid fa-gear"></i></div>
+      <div class="grid"></div>
+    </div>
+           
+        </div>
+        <div class="nav-buttons">
+            <button class="flag-btn cbt-btn" onclick="flagQuestion()" id="flagBtn"> Flag</button>
+            <button class="cbt-btn secondary" onclick="previousQuestion()" id="prevBtn">◀ Previous</button>
+            <button class="cbt-btn" onclick="nextQuestion()" id="nextBtn">Next ▶</button>
+        </div>
+    </div>
+
+   
+    
+
+
+
+   
+    <script src="quiz.js" >
+        
+
+        
+    
+    </script>
+
+    
+</body>
+</html>

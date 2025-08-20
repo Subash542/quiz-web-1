@@ -1,0 +1,88 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Letter and Vocabulary Practice Sets</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(120deg, #fce4ec, #f8bbd0);
+      margin: 0;
+      padding: 2em;
+      color: #880e4f;
+    }
+    h2 {
+      text-align: center;
+      color: #b71c1c;
+      margin-bottom: 1.5em;
+    }
+    .card-box {
+      background: #fce4ec;
+      border-radius: 12px;
+      padding: 1em;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, box-shadow 0.3s;
+      border-top: 6px solid #d81b60;
+      position: relative;
+    }
+    .card-box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      background-color: #f8bbd0;
+    }
+    .card-box h3 {
+      color: #6a1b9a;
+      font-size: 1.2em;
+      margin-bottom: 0.5em;
+    }
+    .see-more-btn {
+      background: #d81b60;
+      color: white;
+      border: none;
+      padding: 0.6em 1.2em;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .see-more-btn:hover {
+      background: #ad1457;
+      transform: scale(1.05);
+    }
+    #set-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5em;
+      margin-top: 2em;
+    }
+    .home{
+      align-items: end;
+    }
+  </style>
+</head>
+<body>
+  <div class="home"><button><a href="index.html">Home</a></button></div>
+  
+  <h2>Letter and Vocabulary – Practice Sets</h2>
+  
+  <div id="set-grid"></div>
+
+
+  <script>
+    const grid = document.getElementById("set-grid");
+    for (let i = 1; i <= 20; i++) {
+      const box = document.createElement("div");
+      box.className = "card-box";
+      box.innerHTML = `<h3>Set ${i}</h3><button class="see-more-btn">Start ▶</button>`;
+      box.onclick = () => alert('Set ' + i + ' clicked!');
+      grid.appendChild(box);
+    }
+  </script>
+</body>
+</html>

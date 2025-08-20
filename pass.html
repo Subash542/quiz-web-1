@@ -1,0 +1,82 @@
+<!-- Pass.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test Feedback - Pass</title>
+    <link rel="stylesheet" href="pass.css" />
+</head>
+<body>
+    <header class="header-pass">
+        <h2>Test Feedback</h2>
+        
+        <button id="exit-btn"><a href="exit.html">Exit Test</a></button>
+    </header>
+
+    <section class="message-box-pass">
+        You have completed this test. Well done. You have passed.
+    </section>
+
+    <section class="result-box-pass">
+        <div class="result-header-pass">Test Result</div>
+        <div><strong>Grade:</strong> Pass</div>
+        <!-- <p id="pass-score">Score:<div class="total-score" id="totalScore">0</div> </p> -->
+        Percentage: <div class="total-score" id="totalPercentage">85%</div><br>
+        Total Score: <strong><span id="totalScore">42</span>/<span id="maxScore">48</span></strong>
+    
+    </section>
+
+
+    
+
+
+    
+
+    
+  
+    <script>
+
+  // Get URL parameters and display scores
+        function loadResults() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            // Get scores from URL
+            const totalScore = urlParams.get('totalScore') || '42';
+            const maxScore = urlParams.get('maxScore') || '48';
+            const percentage = urlParams.get('percentage') || '85';
+            const s1 = urlParams.get('s1') || '10';
+            const s2 = urlParams.get('s2') || '11';
+            const s3 = urlParams.get('s3') || '10';
+            const s4 = urlParams.get('s4') || '11';
+            
+            // Display scores
+            document.getElementById('totalPercentage').textContent = percentage + '%';
+            document.getElementById('totalScore').textContent = totalScore;
+            document.getElementById('maxScore').textContent = maxScore;
+            
+            document.getElementById('section1Score').textContent = s1;
+            document.getElementById('section2Score').textContent = s2;
+            document.getElementById('section3Score').textContent = s3;
+            document.getElementById('section4Score').textContent = s4;
+            
+            // Set current date
+            document.getElementById('testDate').textContent = new Date().toLocaleDateString();
+        }
+        
+        function downloadCertificate() {
+    // Redirect to certificate page with same URL parameters
+    const currentParams = window.location.search;
+    window.location.href = 'certificate.html' + currentParams;
+}
+        
+        function reviewAnswers() {
+            alert('Answer review functionality would be implemented here.');
+        }
+        
+        // Load results when page loads
+        window.onload = loadResults;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Exit Page</title>
+    
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+     <style>
+        button {
+            margin: 8px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+        .view-exit-page{
+            padding: 5px;
+            background-color: rgb(248, 245, 245);
+        }
+        .text-space{
+            display: flex;
+            background-color: black;
+            
+        }
+        .space{
+            width: 6%;
+        }
+        .text-feedbacks{
+              display: flex;
+              justify-content: center;   /* horizontal center */
+              align-items: center;       /* vertical center */
+            height: 55px;             /* example height */
+            
+            color: white;
+            width: 100%;
+            font-size: 2em;
+            
+        }
+        #answer-sheet-container {
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+        }
+        #logout-btn{
+            background-color:red ;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 1em 2em 1em 2em;
+            font-weight: bold;
+        }
+        #requiz-btn{
+            background-color: #446933;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 1em 2em 1em 2em;
+            font-weight: bold;
+        }
+        #show-answer-sheet-btn{
+             background-color:#00796b;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 1em 2em 1em 2em;
+            font-weight: bold;
+            
+        
+
+        }
+        .subash{
+            display: flex;
+            justify-content: space-between;
+        }
+        .correct-answer { color: green; }
+        .user-answer.incorrect { color: red; }
+    </style>
+</head>
+<body>
+    <div class="view-exit-page">
+        <div class="text-space">
+            <div class="space">hello</div>
+            <div class="text-feedbacks">Test Feedback</div>
+        </div>
+        
+        <div class="subash">
+            <div class=""> <button id="show-answer-sheet-btn"><i class="fa-solid fa-list-check"> </i> Question Feedback</button></div>
+            <div class=""> <button id="requiz-btn"><i class="fa-solid fa-spinner"></i> Try Again</button></div>
+            <div class=""> <button id="logout-btn"><i class="fa-solid fa-power-off"></i> Logout</button></div>
+        </div>
+        
+       
+       
+       
+        
+
+        <div id="answer-sheet-container"></div>
+
+    </div>
+    
+
+    <script>
+        const answerSheetBtn = document.getElementById('show-answer-sheet-btn');
+        const answerSheetContainer = document.getElementById('answer-sheet-container');
+        const logoutBtn = document.getElementById('logout-btn');
+        const requizBtn = document.getElementById('requiz-btn');
+
+        const userAnswers = JSON.parse(localStorage.getItem('userAnswers'));
+        const questionsData = JSON.parse(localStorage.getItem('questionsData'));
+
+        function displayAnswerSheet() {
+            if (!userAnswers || !questionsData) {
+                answerSheetContainer.innerHTML = '<p>No answer data available.</p>';
+                return;
+            }
+            let answerSheetHTML = '';
+            for (const qid in questionsData) {
+                const qData = questionsData[qid];
+                const userAnswer = userAnswers[qid] || 'Not Answered';
+                const correctAnswer = qData.answer;
+
+                let userAnswerClass = '';
+                if (userAnswer !== 'Not Answered') {
+                    userAnswerClass = (userAnswer === correctAnswer) ? 'correct-answer' : 'user-answer incorrect';
+                }
+
+                answerSheetHTML += `
+                    <div class="answer-item">
+                        <h4>Question ${qid.replace('q', '')}.</h4>
+                        <p>${qData.question}</p>
+                        <p><strong>Correct Answer:</strong> <span class="correct-answer">${correctAnswer}</span></p>
+                        <p><strong>Your Answer:</strong> <span class="${userAnswerClass}">${userAnswer}</span></p>
+                    </div>
+                    <hr>
+                `;
+            }
+            answerSheetContainer.innerHTML = answerSheetHTML;
+            answerSheetContainer.style.display = 'block';
+            answerSheetBtn.textContent = 'Hide Answer Sheet';
+        }
+
+        answerSheetBtn.addEventListener('click', () => {
+            if (answerSheetContainer.style.display === 'none' || answerSheetContainer.style.display === '') {
+                displayAnswerSheet();
+            } else {
+                answerSheetContainer.style.display = 'none';
+                answerSheetBtn.textContent = 'Show Answer Sheet';
+            }
+        });
+
+        logoutBtn.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'index.html'; // Login or home page
+        });
+
+        requizBtn.addEventListener('click', () => {
+            localStorage.clear();
+            window.location.href = 'quiz.html'; // Quiz start page
+        });
+    </script>
+</body>
+</html>

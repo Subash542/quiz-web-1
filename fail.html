@@ -1,0 +1,35 @@
+<!-- Fail.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Test Feedback - Fail</title>
+    <link rel="stylesheet" href="fail.css" />
+</head>
+<body>
+    <header class="header-fail">
+        <h2>Test Feedback</h2>
+
+         <button id="exit-btn">Exit Test</button>
+    </header>
+
+    <section class="message-box-fail">
+        <strong>You have completed this test. Please prepare well for the next time.</strong>
+    </section>
+
+    <section class="result-box-fail">
+        <div class="result-header-fail">Test Result</div>
+        <div><strong>Grade:</strong> Fail</div>
+    </section>
+    
+
+
+
+     <script>
+        document.getElementById('exit-btn').addEventListener('click', () => {
+            window.location.href = 'exit.html';
+        });
+    </script>
+</body>
+</html>
